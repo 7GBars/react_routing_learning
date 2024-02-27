@@ -1,4 +1,4 @@
-export default function Root() {
+export function Root() {
   return (
     <>
       <div id="sidebar">
@@ -28,6 +28,9 @@ export default function Root() {
         </div>
         <nav>
           <ul>
+            <li>
+              <a href={`/dragAndDrop`}>Your Name</a>
+            </li>
             <li>
               <a href={`/contacts/1`}>Your Name</a>
             </li>

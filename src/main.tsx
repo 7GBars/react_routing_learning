@@ -4,15 +4,20 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+
+import {Root, UX} from "./routes";
 import "./index.css";
 
-import Root from "./routes/root.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root/>,
   },
+  {
+    path: '/ux',
+    element: <UX/>
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
