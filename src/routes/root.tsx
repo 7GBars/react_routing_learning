@@ -29,7 +29,7 @@ export function Root() {
         <nav>
           <ul>
             <li>
-              <a href={`/dragAndDrop`}>Your Name</a>
+              <a href={`/ux`}>UX</a>
             </li>
             <li>
               <a href={`/contacts/1`}>Your Name</a>
