@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-size: border-box;
+}
+.UX--centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card {
+  width: 200px;
+  height: 450px;
+  border: 5px solid;
+  border-radius: 1rem;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  cursor: grab;
+}
+
