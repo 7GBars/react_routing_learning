@@ -4,6 +4,9 @@
   box-size: border-box;
 }
 .UX--centered {
+  background-color: rgba(129, 200, 100, 0.6);
+  height: 100vh;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;

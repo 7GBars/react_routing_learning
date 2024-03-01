@@ -1,3 +1,9 @@
-.draggable-element {
-  cursor: move;
+div.draggable-element {
+  cursor: grab;
+  border: 1px solid black;
 }
+
+div.draggable-element:active {
+  cursor: grabbing;
+}
+

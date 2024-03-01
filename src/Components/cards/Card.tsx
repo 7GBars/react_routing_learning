@@ -13,6 +13,7 @@ export const Card: FC<{cardInfo: Card}> = ({cardInfo}) =>  {
 
   function dragStartHandler(_e: React.DragEvent<HTMLDivElement>, card: Card) {
     console.log( 'Взяли карточку', card);
+    document.body.style.cursor = 'move';
   }
   function dragEndHandler(e: React.DragEvent<HTMLDivElement>) {
      console.log(e, 'Отпустили')
@@ -22,6 +23,8 @@ export const Card: FC<{cardInfo: Card}> = ({cardInfo}) =>  {
 
   function dragOverHandler(e: React.DragEvent<HTMLDivElement>) {
     e.preventDefault();
+    console.log('над кем сейчас перетаскиваем')
+    e.dataTransfer.dropEffect = "move";
     const targetElement = e.target as HTMLElement
     targetElement.style.background = 'lightgrey';
   }

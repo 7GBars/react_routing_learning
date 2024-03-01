@@ -13,7 +13,7 @@ export function UX() {
 
   return (
     <div className={'UX--centered'}>
-      {cards.map(c => <Card cardInfo={c}/>)}
+      {cards.map(c => <Card cardInfo={c} key={c.id}/>)}
       <button onClick={() => setCards(cards)}>Перемешать</button>
       <DragTest/>
     </div>
