@@ -11,9 +11,20 @@ export function UX() {
     {id: 4, order: 4, title: 'Карточка 4'},
   ]);
 
+
+  const [currentCard, setCurrentCard] = useState<Card | null>(null);
+  const sortCard = (a: Card, b: Card) => a.order > b.order ? 1 : -1
   return (
     <div className={'UX--centered'}>
-      {cards.map(c => <Card cardInfo={c} key={c.id}/>)}
+      {cards.sort(sortCard).map(c => <Card
+          key={c.id}
+          cardInfo={c}
+          currentCard={currentCard}
+          setCurrentCard={setCurrentCard}
+          cards={cards}
+          setCards={setCards}
+      />)
+      }
       <button onClick={() => setCards(cards)}>Перемешать</button>
     </div>
   );

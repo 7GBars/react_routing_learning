@@ -1,4 +1,4 @@
-import {FC} from "react";
+import {Dispatch, FC, SetStateAction} from "react";
 
 import './card.css';
 
@@ -7,13 +7,24 @@ export interface Card {
   order: number;
   title: string
 }
-export const Card: FC<{cardInfo: Card}> = ({cardInfo}) =>  {
-
-
-
+type TCardProps = {
+  cardInfo: Card;
+  currentCard: Card | null;
+  setCurrentCard:  Dispatch<SetStateAction<Card | null>>;
+  cards: Card[],
+  setCards: Dispatch<SetStateAction<Card[]>>;
+}
+export const Card: FC<TCardProps> = ({
+      cardInfo,
+      currentCard,
+      setCurrentCard,
+      cards,
+      setCards
+    }) => {
 
   function dragStartHandler(_e: React.DragEvent<HTMLDivElement>, card: Card) {
     console.log( 'Взяли карточку', card);
+    setCurrentCard(card);
 
   }
   function dragEndHandler(e: React.DragEvent<HTMLDivElement>) {
@@ -37,9 +48,23 @@ export const Card: FC<{cardInfo: Card}> = ({cardInfo}) =>  {
     dropTargetCardElement.style.background = 'rgba(0,0,0,0)';
   }
   function dropHandler(e:  React.DragEvent<HTMLDivElement>, card: Card) {
-    console.log('сброс', card)
-    const dropTargetCardElement = e.target as HTMLDivElement;
     e.preventDefault(); //todo зачем
+    console.log('сброс', card);
+    console.log('currentCard', currentCard)
+    debugger
+    if (currentCard ) {
+      setCards(cards.map(c => {
+        if (c.id === card.id) {
+          return {...c, order: currentCard.order}
+        } else if (c.id === currentCard.id) {
+          return {...c, order: card.order}
+        }
+        return c
+      }))
+    }
+
+    const dropTargetCardElement = e.target as HTMLDivElement;
+
     dropTargetCardElement.style.background = 'rgba(0,0,0,0)';
   }
 
