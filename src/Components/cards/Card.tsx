@@ -1,7 +1,7 @@
 import {FC} from "react";
 
 import './card.css';
-import {createLogger} from "vite";
+
 export interface Card {
   id: number;
   order: number;
