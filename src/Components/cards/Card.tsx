@@ -1,6 +1,7 @@
 import {FC} from "react";
 
 import './card.css';
+import {createLogger} from "vite";
 export interface Card {
   id: number;
   order: number;
@@ -24,23 +25,26 @@ export const Card: FC<{cardInfo: Card}> = ({cardInfo}) =>  {
     e.preventDefault();
     e.dataTransfer.dropEffect = 'move';
   }
-  function dragLeaveHandler(e: React.DragEvent<HTMLDivElement>) {
-    const dropTargetCardElement = e.target as HTMLDivElement;
 
+  function dragEnterHandler(e: React.DragEvent<HTMLDivElement>) {
+    console.log('зашел в зону drop')
+    const dropTargetCardElement = e.target as HTMLDivElement;
+    dropTargetCardElement.style.background = 'lightgrey';
+  }
+  function dragLeaveHandler(e: React.DragEvent<HTMLDivElement>) {
+    console.log('вышел из зоны drop')
+    const dropTargetCardElement = e.target as HTMLDivElement;
     dropTargetCardElement.style.background = 'rgba(0,0,0,0)';
   }
   function dropHandler(e:  React.DragEvent<HTMLDivElement>, card: Card) {
-    console.log('e', card)
-
-  }
-
-  function dragEnterHandler(e: React.DragEvent<HTMLDivElement>) {
-    e.preventDefault();
+    console.log('сброс', card)
     const dropTargetCardElement = e.target as HTMLDivElement;
-    const elementId = dropTargetCardElement.getAttribute('id');
-    dropTargetCardElement.style.background = 'lightgrey';
-
+    e.preventDefault(); //todo зачем
+    dropTargetCardElement.style.background = 'rgba(0,0,0,0)';
   }
+
+
+
 
   return (
     <div
