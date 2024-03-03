@@ -51,7 +51,7 @@ export const Card: FC<TCardProps> = ({
     e.preventDefault(); //todo зачем
     console.log('сброс', card);
     console.log('currentCard', currentCard)
-    debugger
+
     if (currentCard ) {
       setCards(cards.map(c => {
         if (c.id === card.id) {
